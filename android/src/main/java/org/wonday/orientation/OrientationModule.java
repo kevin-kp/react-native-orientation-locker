@@ -331,6 +331,14 @@ public class OrientationModule extends ReactContextBaseJavaModule implements Ori
     }
 
     @ReactMethod
+    public void resetOrientations() {
+        final Activity activity = getCurrentActivity();
+        if (activity == null) return;
+        activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+        isLocked = false;
+    }
+
+    @ReactMethod
     public void getAutoRotateState(Callback callback) {
       final ContentResolver resolver = ctx.getContentResolver();
       boolean rotateLock = android.provider.Settings.System.getInt(

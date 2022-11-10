@@ -86,6 +86,11 @@ export default class Orientation {
     OrientationNative.unlockAllOrientations();
   };
 
+  static resetOrientations = () => {
+    locked = false;
+    OrientationNative.resetOrientations();
+  };
+
   static addOrientationListener = (cb) => {
     var key = getKey(cb);
     LocalEventEmitter =

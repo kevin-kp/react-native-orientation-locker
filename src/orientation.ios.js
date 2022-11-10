@@ -87,6 +87,13 @@ export default class Orientation {
     OrientationNative.unlockAllOrientations();
   };
 
+  static resetOrientations = () => {
+    locked = false;
+    // unlockAllOrientations does not unlock a locked orientation by the user
+    //  so it is save to just reuse unlockAllOrientations for this on iOS.
+    OrientationNative.unlockAllOrientations();
+  };
+
   static addOrientationListener = cb => {
     var key = getKey(cb);
     listeners[key] = LocalEventEmitter.addListener(
